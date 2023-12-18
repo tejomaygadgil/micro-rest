@@ -1,13 +1,20 @@
 #!/bin/bash
 
-# Generate a random number between 0 and 120 (2 minutes)
-random_time=$((RANDOM % 121))
+# Set loop time in seconds (research suggests ~120)
+loop_time=120
+while true; do
+  # Generate a random number between 0 and loop_time
+  random_time=$((RANDOM % $loop_time+1))
 
-# Sleep for the random time
-echo "Waiting for $random_time seconds..."
-sleep $random_time
+  # Sleep for the random time
+  echo "Waiting for $random_time seconds..."
+  sleep $random_time
 
-# Play a sound (adjust the path to your sound file)
-sound_file="complete.oga"
-play "$sound_file"
+  # Play a sound (adjust the path to your sound file)
+  sound_file="complete.oga"
+  play "$sound_file"
 
+  # Sleep for remaining time
+  echo "Sleeping for $(($loop_time - $random_time)) seconds..."
+  sleep $(($loop_time - $random_time))
+done
