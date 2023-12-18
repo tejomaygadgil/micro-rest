@@ -12,7 +12,7 @@ while true; do
 
   # Play a sound (adjust the path to your sound file)
   sound_file="complete.oga"
-  play "$sound_file"
+  play "$sound_file" &> /dev/null
 
   # Sleep for remaining time
   # echo "Sleeping for $(($loop_time - $random_time)) seconds..."
