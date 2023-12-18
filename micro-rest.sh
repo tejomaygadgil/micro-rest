@@ -9,7 +9,6 @@ wait_period=10
 while true; do
   # Generate a random number +/- delta
   random_time=$(((RANDOM % (2*$delta))-$delta))
-  echo $random_time
 
   # Sleep for loop_time plus random_time
   sleep $(($loop_time + $random_time))
