@@ -2,14 +2,16 @@
 
 # Set loop time in seconds (research suggests ~120)
 loop_time=120
+# Set +/- delta
+delta=30
 # Wait period (research: ~10)
 wait_period=10
 while true; do
-  # Generate a random number between 0 and loop_time-10
-  random_time=$((RANDOM % ($loop_time+1-10-1)))
+  # Generate a random number between 0 and delta
+  random_time=$((RANDOM % $delta+1))
 
-  # Sleep for the random time
-  sleep $random_time
+  # Sleep for loop_time plus random_time
+  sleep $(($loop_time + $random_time))
 
   # See if media is playing
   media_status=$(playerctl status 2> /dev/null)
@@ -23,7 +25,7 @@ while true; do
   sound_file="complete.oga"
   play "$sound_file" &> /dev/null
   
-  # Wait 10 seconds
+  # Wait for wait_period
   sleep $wait_period
 
   # Resume
@@ -32,8 +34,5 @@ while true; do
   fi
 
   # Print how long the break was (for fun)
-  echo "$random_time seconds"
-
-  # Sleep for remaining time
-  sleep $(($loop_time - $random_time))
+  echo "$(($loop_time + random_time)) seconds"
 done
