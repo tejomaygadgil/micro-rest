@@ -6,10 +6,9 @@ loop_time=120
 wait_period=10
 while true; do
   # Generate a random number between 0 and loop_time-10
-  random_time=$((RANDOM % $loop_time+1-10-1))
+  random_time=$((RANDOM % ($loop_time+1-10-1)))
 
   # Sleep for the random time
-  # echo "Waiting for $random_time seconds..."
   sleep $random_time
 
   # See if media is playing
@@ -31,8 +30,10 @@ while true; do
   if [ "$media_status" == "Playing" ]; then
     playerctl play
   fi
- 
+
+  # Print how long the break was (for fun)
+  echo "$random_time seconds"
+
   # Sleep for remaining time
-  # echo "Sleeping for $(($loop_time - $random_time)) seconds..."
   sleep $(($loop_time - $random_time))
 done
