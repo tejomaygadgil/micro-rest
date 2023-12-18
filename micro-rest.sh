@@ -22,7 +22,7 @@ while true; do
 
   # Play a sound (adjust the path to your sound file)
   sound_file="complete.oga"
-  play "$sound_file"
+  play "$sound_file" &> /dev/null
   
   # Wait 10 seconds
   sleep $wait_period
@@ -31,7 +31,7 @@ while true; do
   if [ "$media_status" == "Playing" ]; then
     playerctl play
   fi
-
+ 
   # Sleep for remaining time
   # echo "Sleeping for $(($loop_time - $random_time)) seconds..."
   sleep $(($loop_time - $random_time))
