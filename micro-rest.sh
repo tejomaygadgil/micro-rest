@@ -7,7 +7,7 @@ delta=30
 # Wait period (research: ~10)
 wait_period=10
 while true; do
-  # Generate a random number between 0 and delta
+  # Generate a random number +/- delta
   random_time=$(((RANDOM % (2*$delta))-$delta))
   echo $random_time
 
