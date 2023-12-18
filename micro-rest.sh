@@ -7,7 +7,7 @@ while true; do
   random_time=$((RANDOM % $loop_time+1))
 
   # Sleep for the random time
-  echo "Waiting for $random_time seconds..."
+  # echo "Waiting for $random_time seconds..."
   sleep $random_time
 
   # Play a sound (adjust the path to your sound file)
@@ -15,6 +15,6 @@ while true; do
   play "$sound_file"
 
   # Sleep for remaining time
-  echo "Sleeping for $(($loop_time - $random_time)) seconds..."
+  # echo "Sleeping for $(($loop_time - $random_time)) seconds..."
   sleep $(($loop_time - $random_time))
 done
