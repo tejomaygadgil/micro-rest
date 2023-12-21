@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Set directory 
+cd "$(dirname "$0")"
 # Set loop time in seconds (research suggests ~120)
 loop_time=120
 # Set +/- delta
